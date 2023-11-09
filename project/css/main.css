@@ -1,13 +1,6 @@
 /* 헤더 스타일 재정의 */
-.navbar {
-    background-color: red !important;
-    /* 백그라운드 컬러 빨간색 배경 색상 */
-    margin-bottom: 20px;
-    /* 네비게이션 바와 헤더 사이 간격 설정 */
-}
 
-/* 검색 창 너비를 조절합니다. */
-.form-control {
+#search-input {
     width: 200px;
     /* 원하는 너비로 조절하세요. */
 }
@@ -21,9 +14,12 @@
 /* 검색 창을 중앙에 위치시킵니다. */
 .form-inline {
     display: flex;
+    
     justify-content: center;
     /* 아이템을 가운데 정렬합니다. */
 }
+
+
 
 /* 드롭다운 메뉴의 백그라운드 색상을 빨간색으로 설정 
 .dropdown-menu {
