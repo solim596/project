@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" type="text/css" href="/Usersignup.css">
+    <script>
+        // 이름 필드 유효성 검사 (이전 코드와 동일)
+        function validateName() {
+            var nameInput = document.getElementById("name");
+            var nameValue = nameInput.value;
+            if (/[^A-Za-z가-힣]/.test(nameValue)) {
+                alert("이름에는 한글 또는 영어만 입력하세요.");
+                nameInput.value = "";
+            }
+        }
+
+        // ID 필드 유효성 검사 (한글이 입력되면 영어와 숫자만 입력하도록)
+        function validateID() {
+            var idInput = document.getElementById("nickname");
+            var idValue = idInput.value;
+            if (/[^A-Za-z0-9]/.test(idValue)) {
+                alert("ID에는 영어와 숫자만 입력하세요.");
+                idInput.value = idValue.replace(/[^A-Za-z0-9]/g, ''); // 한글 및 특수문자 제거
+            }
+        }
+
+
+        // 전화번호 필드 유효성 검사 (이전 코드와 동일)
+        
+        // 주소 필드 유효성 검사 및 메시지 표시
+        function validateAddress() {
+            var addressInput = document.getElementById("address");
+            var addressValue = addressInput.value;
+            if (/[^가-힣0-9]/.test(addressValue)) {
+                alert("주소에는 한글 또는 숫자만 입력하세요.");
+                addressInput.value = "";
+            }
+        }
+        // 홈 버튼 클릭 시 메인 페이지로 이동
+        function goToHome() {
+            window.location.href = '/';
+        }
+        // 비밀번호 일치 여부 검사
+        function validatePassword() {
+            var passwordInput = document.getElementById("password");
+            var confirmPasswordInput = document.getElementById("confirmPassword");
+            var passwordValue = passwordInput.value;
+            var confirmPasswordValue = confirmPasswordInput.value;
+
+            if (passwordValue !== confirmPasswordValue) {
+                alert("비밀번호가 일치하지 않습니다. 다시 확인해주세요.");
+                passwordInput.value = "";
+                confirmPasswordInput.value = "";
+            }
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <h1>사용자 회원가입 페이지</h1>
+    <form action="/usersignup" method="post">
+        
+        <label for="id">ID</label>
+        <input type="text" id="userid" name="userid" required onblur="validateID()">
+        <input type="checkbox" id="checkNickname" onclick="checkNicknameAvailability()">
+        <label for="checkid">중복 확인</label><br><br>
+
+        <label for="name">이름</label>
+        <input type="text" id="name" name="name" required onblur="validateName()"><br><br>
+
+        <!-- 비밀번호 입력 -->
+        <label for="password">비밀번호</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <!-- 비밀번호 재입력 -->
+        <label for="confirmPassword">비밀번호 재입력</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required onblur="validatePassword()"><br><br>
+
+
+        <label for="name">닉네임</label>
+        <input type="text" id="nickname" name="nickname" required onblur="validateName()"><br><br>
+
+        <label for="emailId">이메일</label>
+        <input type="text" id="email" name="email" placeholder="example" required style="width: 150px;">
+        @
+        <select title="이메일선택" id="emailDomain" name="emailDomain" style="width: 150px;"> <!-- 여기서 width 값을 조절합니다 -->
+            <option>naver.com</option>
+            <option>google.com</option>
+            <option>daum.com</option>
+            <option>kakao.com</option>
+        </select>
+        <br>
+
+        <label for="phone">전화번호</label>
+        <input type="tel" id="phone" name="phone" required onblur="validatePhone()">
+
+        <label for="address">주소</label>
+        <input type="text" id="address" name="address" required onblur="validateAddress()"><br><br>
+
+        <label for="birthdate">생년월일</label>
+        <input type="date" id="birth" name="birth" required><br><br>
+
+        <label>성별</label>
+        <input type="radio" id="male" name="gender" value="남자" required>
+        <label for="male">남성</label>
+        <input type="radio" id="female" name="gender" value="여자" required>
+        <label for="female">여성</label><br><br>
+
+        <label for="category">선호 카테고리:</label>
+        <select id="category" name="category">
+            <option value="치킨">치킨</option>
+            <option value="피자">피자/양식</option>
+            <option value="중식">중식 </option>
+            <option value="족발">족발/보쌈 </option>
+            <option value="한식">한식 </option>
+            <option value="일식">일식/돈까스 </option>
+            <option value="분식">분식 </option>
+            <option value="야식">야식</option>
+            <option value="프렌차이즈">프렌차이즈</option>
+            <option value="카페">카페</option>
+            <option value="편의점">편의점</option>
+        </select><br><br>
+
+        <input type="submit" value="가입하기">
+        <button type="button" onclick="cancelRegistration()">가입 취소</button>
+        <!-- 홈 버튼 추가 -->
+        <button type="button" onclick="goToHome()">홈</button>
+    </form>
+<!--
+  <script>
+        document.querySelector("form").addEventListener("submit", function (event) {
+    event.preventDefault(); // 기본 제출 동작을 막습니다.
+
+        //폼 데이터를 직렬화하고 서버로 POST 요청을 보냅니다.
+        const formData = new FormData(this);
+        fetch('/usersignup', {
+        method: 'POST',
+        body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            // 서버 응답에 대한 처리를 이곳에 추가합니다.
+
+            if (data.success) {
+                // 회원가입이 성공한 경우
+                redirectToLoginPage();
+            } else {
+                // 회원가입이 실패한 경우
+                alert('회원가입에 실패하였습니다. 다시 시도해주세요.');
+            }
+        })
+        .catch(error => {
+            console.error('오류 발생: ', error);
+             alert('서버 오류가 발생했습니다. 다시 시도해주세요.');
+         });
+     });
+   </script>
+-->   
+    <script>
+        function cancelRegistration() {
+            // 여기에 취소 동작을 추가할 수 있습니다.
+            alert('가입이 취소되었습니다.');
+        }
+    </script>
+<!-- 
+    <script>
+          function redirectToLoginPage() {
+        alert('회원가입이 성공하였습니다. 로그인 페이지로 이동합니다.');
+        // 로그인 페이지로 이동 (이동하고자 하는 페이지의 경로를 지정)
+        window.location.href = '/login'; // 로그인 페이지 경로로 변경하세요.
+    }
+    </script> -->
+
+</body>
+
+</html>

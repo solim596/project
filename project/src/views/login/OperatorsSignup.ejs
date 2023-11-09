@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang = 'ko'>
+
+<head>
+    <title>비즈니스 멤버 가입</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="/OperatorsSignup.css">
+
+    <script>
+        function validateAddress() {
+            var address = document.getElementById("address").value;
+            var regex = /^[가-힣\s]+$/; // 한글과 공백만 허용
+
+            if (address.length > 50 || (!regex.test(address) && /[A-Za-z]/.test(address))) {
+                document.getElementById("addressMessage").innerText = "한글로 입력하세요. 영어가 입력 되었습니다.";
+            } else {
+                document.getElementById("addressMessage").innerText = "";
+            }
+            checkFormValidity();
+        }
+
+        function validateBusinessNumber() {
+            var businessNumber = document.getElementById("businessNumber").value;
+            var regex = /^[0-9]+$/; // 숫자만 허용
+
+            if (!regex.test(businessNumber)) {
+                document.getElementById("businessNumberMessage").innerText = "숫자만 입력하세요.";
+            } else if (businessNumber.length > 30) {
+                document.getElementById("businessNumberMessage").innerText = "사업자 번호는 30자 이내로 입력해주세요.";
+            } else {
+                document.getElementById("businessNumberMessage").innerText = "";
+            }
+            checkFormValidity();
+        }
+
+        function validatePhoneNumber() {
+            var phoneNumber = document.getElementById("phoneNumber").value;
+            var regex = /^[0-9]+$/; // 숫자만 허용
+
+            if (!regex.test(phoneNumber)) {
+                document.getElementById("phoneNumberMessage").innerText = "숫자만 입력하세요.";
+            } else if (phoneNumber.length > 20) {
+                document.getElementById("phoneNumberMessage").innerText = "전화번호는 20자 이내로 입력해주세요.";
+            } else {
+                document.getElementById("phoneNumberMessage").innerText = "";
+            }
+            checkFormValidity();
+        }
+
+        function checkFormValidity() {
+            var storeNameValid = document.getElementById("storeNameMessage").innerText === "";
+            var addressValid = document.getElementById("addressMessage").innerText === "";
+            var businessNumberValid = document.getElementById("businessNumberMessage").innerText === "";
+            var phoneNumberValid = document.getElementById("phoneNumberMessage").innerText === "";
+
+            var joinButton = document.getElementById("joinButton");
+            joinButton.disabled = !(storeNameValid && addressValid && businessNumberValid && phoneNumberValid);
+        }
+        function goToHomePage() {
+            window.location.href = "/"; // 홈 버튼을 클릭하면 메인 페이지로 이동
+        }
+
+        function showWelcomeMessage() {
+            document.getElementById("message").innerText = "가입이 되었습니다. -환영합니다-";
+        }
+
+        function cancelMembership() {
+            document.getElementById("message").innerText = "가입이 취소되었습니다.";
+        }
+    </script>
+</head>
+
+<body>
+    <h1>비즈니스 멤버 가입 페이지</h1>
+    <form action="/shopsign" method="post"> <!--액션쪽 수정해야함-->
+        
+        <label for="id">ID</label>
+        <input type="text" id="shopid" name="shopid" required onblur="validateID()">
+        <input type="checkbox" id="checkshopid" onclick="checkshopidAvailability()">
+        <label for="checkshopid">중복 확인</label><br><br>
+
+        <!-- 비밀번호 입력 -->
+        <label for="password">비밀번호</label>
+        <input type="password" id="password" name="password" required><br><br>
+  
+        <!-- 비밀번호 재입력 -->
+        <label for="confirmPassword">비밀번호 재입력</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required onblur="validatePassword()"><br><br>
+
+        <label for="storeName">가게 이름:</label>
+        <input type="text" id="storename" name="storename" required oninput="validateStoreName()">
+        <p id="storeNameMessage" style="color: red;"></p><br><br>
+
+        <label for="address">주소:</label>
+        <input type="text" id="address" name="address" required oninput="validateAddress()">
+        <p id="addressMessage" style="color: red;"></p><br><br>
+
+        <label for="businessnumber">사업자 번호:</label>
+        <input type="text" id="businessnumber" name="businessnumber" required oninput="validateBusinessNumber()">
+        <p id="businessnumberMessage" style="color: red;"></p><br><br>
+
+        <label for="shoptel">전화번호:</label>
+        <input type="tel" id="shoptel" name="shoptel" required oninput="validatePhoneNumber()">
+        <p id="shoptelMessage" style="color: red;"></p><br><br>
+
+        <label for="category">카테고리:</label>
+        <select id="category" name="category">
+            <option value="치킨">치킨</option>
+            <option value="피자">피자/양식</option>
+            <option value="중식">중식 </option>
+            <option value="족발">족발/보쌈 </option>
+            <option value="한식">한식 </option>
+            <option value="일식">일식/돈까스 </option>
+            <option value="분식">분식 </option>
+            <option value="야식">야식</option>
+            <option value="프렌차이즈">프렌차이즈</option>
+            <option value="카페">카페</option>
+            <option value="편의점">편의점</option>
+        </select><br><br>
+
+        <input type="submit" value="가입" id="joinButton" onclick="showWelcomeMessage()">
+        <input type="button" value="가입 취소" onclick="cancelMembership()">
+        <input type="button" value="홈" onclick="goToHomePage()">
+    </form>
+    </form>
+
+    <p id="message"></p>
+    <script>
+    function validateID() {
+        var idInput = document.getElementById("shopid");
+        var idValue = idInput.value;
+        // ID 유효성 검사 로직 추가
+        // ...
+    }
+    </script>
+    <script>
+    function validatePassword() {
+        var passwordInput = document.getElementById("password");
+        var confirmPasswordInput = document.getElementById("confirmPassword");
+        var passwordValue = passwordInput.value;
+        var confirmPasswordValue = confirmPasswordInput.value;
+    
+        // 비밀번호 일치 여부를 확인하는 로직 추가
+        // ...
+    }
+    </script>
+    <script>
+        function validateStoreName() {
+    var storeNameInput = document.getElementById("storename");
+    var storeNameValue = storeNameInput.value;
+    // 가게 이름 유효성 검사 로직 추가
+    // ...
+    }
+    </script>
+
+    <script>
+        function checkFormValidity() {
+    // 필드 유효성 검사 로직 추가
+    // ...
+
+    var joinButton = document.getElementById("joinButton");
+    joinButton.disabled = !(storeNameValid && addressValid && businessNumberValid && phoneNumberValid);
+    }
+
+    </script>
+</body>
+
+</html>

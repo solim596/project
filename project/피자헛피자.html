@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/피자헛.css">
+</head>
+
+<body>
+    <!-- 네비게이션 바 (헤더) 추가 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><strong class="text-dark">배달 주문 사이트</strong></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <!-- 드롭다운 토글 버튼 -->
+                        <a class="nav-link text-dark dropdown-toggle" href="#" id="noticeDropdown" role="button"
+                            data-bs-toggle="dropdown" data-bs-target="#noticeDropdownMenu" aria-expanded="false">
+                            <strong>공지사항</strong>
+                        </a>
+                        <!-- 드롭다운 메뉴 -->
+                        <ul class="dropdown-menu" id="noticeDropdownMenu" aria-labelledby="noticeDropdown">
+                            <!-- 공지사항 하위 메뉴 -->
+                            <li><a class="dropdown-item" href="#">이벤트</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <!-- 드롭다운 토글 버튼 -->
+                        <a class="nav-link text-dark dropdown-toggle" href="#" id="categoryDropdown" role="button"
+                            data-bs-toggle="dropdown" data-bs-target="#categoryDropdownMenu" aria-expanded="false">
+                            <strong>카테고리</strong>
+                        </a>
+                        <!-- 드롭다운 메뉴 -->
+                        <ul class="dropdown-menu" id="categoryDropdownMenu" aria-labelledby="categoryDropdown">
+                            <!-- 카테고리 하위 메뉴 -->
+                            <li><a class="dropdown-item" href="#">음식</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <!-- 드롭다운 토글 버튼 -->
+                        <a class="nav-link text-dark dropdown-toggle" href="#" id="guideDropdown" role="button"
+                            data-bs-toggle="dropdown" data-bs-target="#guideDropdownMenu" aria-expanded="false">
+                            <strong>이용가이드</strong>
+                        </a>
+                        <!-- 드롭다운 메뉴 -->
+                        <ul class="dropdown-menu" id="guideDropdownMenu" aria-labelledby="guideDropdown">
+                            <!-- 이용가이드 하위 메뉴 -->
+                            <li><a class="dropdown-item" href="guide.html">도움말</a></li>
+                            <li><a class="dropdown-item" href="boardL.html">문의하기</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 검색 폼 -->
+    <form class="form-inline mt-3" id="search-form">
+        <!-- 검색 입력란의 ID를 "search-input"으로 수정 -->
+        <input class="form-control" type="search" placeholder="음식 또는 가게 검색" aria-label="Search" id="search-input">
+        <!-- 검색 버튼의 type을 "submit"으로 수정 -->
+        <button class="btn btn-outline-success" type="submit">검색</button>
+    </form>
+
+    <!-- 네비바 -->
+    <div class="navbar2">
+        <ul>
+
+            <li><a href="치킨.html" onclick="navigateTo('치킨.html')">치킨</a> |</li>
+            <li><a href="피자.html" onclick="navigateTo('피자.html')">피자</a> |</li>
+            <li><a href="짜장면.html" onclick="navigateTo('짜장면.html')">중국집</a> |</li>
+            <li><a href="한식.html" onclick="navigateTo('한식.html')">한식</a> |</li>
+            <li><a href="일식.html" onclick="navigateTo('일식.html')">일식 / 돈까스</a> |</li>
+            <li><a href="분식.html" onclick="navigateTo('분식.html')">분식</a> |</li>
+            <li><a href="야식.html" onclick="navigateTo('야식.html')">야식</a> |</li>
+            <li><a href="프렌차이츠.html" onclick="navigateTo('프렌차이츠.html')">프렌차이즈</a> |</li>
+            <li><a href="카페.html" onclick="navigateTo('카페.html')">카페</a> |</li>
+            <li><a href="편의점.html" onclick="navigateTo('편의점.html')">편의점</a> |</li>
+            <li><a href="1인주문.html" onclick="navigateTo('1인주문.html')">1인분 주문</a></li>
+        </ul>
+    </div>
+
+    <!--container 전체 그리드-->
+    <div class="grid-container">
+        <!-- 1열 -->
+        <div class="grid-item">
+            <div class="col1">
+                <div class="image-container">
+                    <img src="사진/피자헛.jpeg" alt="Your Image" style="width: 150px; height: 150;">
+                    <!-- 이미지 -->
+                </div>
+                <!-- 텍스트를 이미지 오른쪽 가운데로 배치하는 스타일 -->
+                <p class="centered-text">피자헛피자</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 2열 아래에 위치한 그리드 -->
+    <div class="grid-container">
+        <div class="grid-item">
+            <!-- 2열 - 1번 칸 -->
+            <div class="col2-item">
+                <p class="text">메뉴</p>
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <!-- 2열 - 2번 칸 -->
+            <div class="col2-item">
+                <p class="text">리뷰</p>
+            </div>
+        </div>
+
+        <div class="grid-item">
+            <!-- 2열 - 3번 칸 -->
+            <div class="col2-item">
+                <p class="text">가게 정보</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3열 -->
+    <div class="grid-container">
+        <div class="grid-item">
+            <div class="col3" id="toggleText3" onclick="toggleHiddenText(3)">
+                <!-- 3열 내용 -->
+                <div>
+                    <label class="checkbox-label">
+                        <span class="open-button">추천메뉴</span>
+                    </label>
+                </div>
+                <div class="hidden-text" id="hiddenText3">
+                    <!-- 이미지와 텍스트가 포함된 라벨 -->
+                    <label class="checkbox-label">
+                        <input type="checkbox" class="checkbox" id="checkbox3_1" data-price="0">
+                        <div class="checkbox-label">
+
+                            <span class="hidden-image-container">
+                                <img src="/피자헛/립스테이크.png" alt="Hidden Image" style="width: 80px; height: 80;">
+                            </span>
+                            <span class="hidden-text-content">
+                                <p>립스테이크(M,L) 0원 </p>
+                            </span>
+                        </div>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" class="checkbox" id="checkbox3_2" data-price="0">
+                        <div class="checkbox-label">
+                            <span class="hidden-image-container">
+                                <img src="/피자헛/베이컨포테이토.png" alt="Hidden Image" style="width: 80px; height: 80;">
+                            </span>
+                            <span class="hidden-text-content">
+                                <p>베이컨 포테이토(M,L) 0원</p>
+                            </span>
+                        </div>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" class="checkbox" id="checkbox3_3" data-price="0">
+                        <div class="checkbox-label">
+                            <span class="hidden-image-container">
+                                <img src="/피자헛/콤비네이션&LA불고기.png" alt="Hidden Image" style="width: 80px; height: 80;">
+                            </span>
+                            <span class="hidden-text-content">
+                                <p>콤비네이션 & LA불고기(M,L) 0원</p>
+                            </span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4열 -->
+    <div class="grid-container">
+        <div class="grid-item">
+            <div class="col4" id="toggleText4" onclick="toggleHiddenText(4)">
+                <!-- 4열 내용 -->
+                <span class="open-button">피자</span>
+                <div class="hidden-text" id="hiddenText4">
+                    <label for="checkbox4_1" class="checkbox-label">
+                        <input type="checkbox" class="checkbox" id="checkbox4_1" data-price="0">
+                        <div class="checkbox-label">
+                            <span class="hidden-image-container">
+                                <img src="/피자헛/아메리칸스폐셜.png" alt="Hidden Image" style="width: 80px; height: 80;">
+                            </span>
+                            <span class="hidden-text-content">
+                                <p>아메리칸 스폐셜(M,L) 0원</p>
+                            </span>
+                        </div>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" class="checkbox" id="checkbox4_2" data-price="0">
+                        <div class="checkbox-label">
+                            <span class="hidden-image-container">
+                                <img src="/피자헛/콤비네이션&LA불고기.png" alt="Hidden Image" style="width: 80px; height: 80;">
+                            </span>
+                            <span class="hidden-text-content">
+                                <p>콤비네이션 & LA불고기(M.L) 0원</p>
+                            </span>
+                        </div>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" class="checkbox" id="checkbox4_3" data-price="0">
+                        <div class="checkbox-label">
+                            <span class="hidden-image-container">
+                                <img src="/피자헛/토핑킹.png" alt="Hidden Image" style="width: 80px; height: 80;">
+                            </span>
+                            <span class="hidden-text-content">
+                                <p>토핑킹(M,L) 0원</p>
+                            </span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5열 -->
+    <div class="grid-container">
+        <div class="grid-item">
+            <div class="col5" id="toggleText5" onclick="toggleHiddenText(5)">
+                <!-- 5열 내용 -->
+                <div>
+                    <label>
+                        <span class="open-button">사이드메뉴</span>
+                    </label>
+                </div>
+                <div class="hidden-text" id="hiddenText5">
+                    <!-- 이미지와 텍스트가 포함된 라벨 -->
+                    <label class="checkbox-label">
+                        <input type="checkbox" class="checkbox" id="checkbox5_1" data-price="0">
+                        <div class="checkbox-label">
+                            <span class="hidden-image-container">
+                                <img src="/도미노피자/NEW치즈&베이컨까르봅나라.jpg " alt="Hidden Image"
+                                    style="width: 80px; height: 80;">
+                            </span>
+                            <span class="hidden-text-content">
+                                <p>NEW치즈 & 베이컨 까르보나라 0원</p>
+                            </span>
+                        </div>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" class="checkbox" id="checkbox5_2" data-price="0">
+                        <div class="checkbox-label">
+                            <span class="hidden-image-container">
+                                <img src="/도미노피자/NEW치즈볼로네즈스타게피.jpg" alt="Hidden Image" style="width: 80px; height: 80;">
+                            </span>
+                            <span class="hidden-text-content">
+                                <p>NEW치즈 볼로네즈 스타케피 0원</p>
+                            </span>
+                        </div>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" class="checkbox" id="checkbox5_3" data-price="0">
+                        <div class="checkbox-label">
+                            <span class="hidden-image-container">
+                                <img src="/도미노피자/맥앤치즈볼.jpg" alt="Hidden Image" style="width: 80px; height: 80;">
+                            </span>
+                            <span class="hidden-text-content">
+                                <p>맥 & 치즈 볼 0원</p>
+                            </span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6열 -->
+    <div class="grid-container">
+        <div class="grid-item">
+            <div class="col6" id="toggleText6" onclick="toggleHiddenText(6)">
+                <!-- 6열 내용 -->
+                <div class="open-button-container">
+                    <label>
+                        <span class="open-button">음료</span>
+                    </label>
+                </div>
+                <div class="hidden-text" id="hiddenText6">
+                    <label for="checkbox6_1" class="checkbox-label">
+                        <input type="checkbox" class="checkbox" id="checkbox6_1" data-price="2500">
+                        <div class="hidden-image-container">
+                            <img src="/bbq/콜라1.25jpeg.jpeg" alt="Hidden Image" style="width: 80px; height: 80;">
+                        </div>
+                        <div class="hidden-text-content">
+                            <p>콜라 1.25ml 2,500원</p>
+                        </div>
+                    </label>
+                    <label for="checkbox6_1" class="checkbox-label">
+                        <input type="checkbox" class="checkbox" id="checkbox6_1" data-price="2500">
+                        <div class="hidden-image-container">
+                            <img src="/bbq/사이다1.25jpeg.jpeg" alt="Hidden Image" style="width: 80px; height: 80;">
+                        </div>
+                        <div class="hidden-text-content">
+                            <p>사이다 1.25ml 2,500원</p>
+                        </div>
+                    </label>
+                    <label for="checkbox6_1" class="checkbox-label">
+                        <input type="checkbox" class="checkbox" id="checkbox6_1" data-price="1200">
+                        <div class="hidden-image-container">
+                            <img src="/bbq/콜라_500ml.jpg" alt="Hidden Image" style="width: 80px; height: 80;">
+                        </div>
+                        <div class="hidden-text-content">
+                            <p>콜라 500ml 1,200원</p>
+                        </div>
+                    </label>
+                    <label for="checkbox6_1" class="checkbox-label">
+                        <input type="checkbox" class="checkbox" id="checkbox6_1" data-price="1200">
+                        <div class="hidden-image-container">
+                            <img src="/bbq/사이다500.jpeg" alt="Hidden Image" style="width: 80px; height: 80;">
+                        </div>
+                        <div class="hidden-text-content">
+                            <p>콜라 1.25ml 1,200원</p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 주문 페이지 -->
+
+    <aside>
+        <h2>주문하기</h2>
+        <ul id="order-list">
+            <!-- 체크 표시(v)된 메뉴들이 여기에 추가됩니다. -->
+        </ul>
+        <p id="total-price">총 가격: ₩0</p>
+        <button id="order-button">주문하기</button>
+    </aside>
+
+    <footer>
+
+        <nav>
+            <a href="이용약관.html">이용약관</a>
+            <a href="#">개인정보방침</a>
+            <a href="소개.html">소개</a>
+            <a href="#">음식점소개</a>
+            <a href="#">공지사항</a>
+        </nav>
+        <p>한국폴리텍대학 인천캠퍼스 AI융합소프트웨어과 2-A반</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const checkboxes = document.querySelectorAll('.checkbox'); // 모든 체크박스 선택
+            const orderList = document.getElementById('order-list'); // 주문 목록 UL 엘리먼트
+            const totalPrice = document.getElementById('total-price'); // 총 가격 표시 엘리먼트
+
+            // 체크박스의 상태가 변경될 때 호출되는 함수
+            function handleCheckboxChange() {
+                const selectedMenu = Array.from(checkboxes)
+                    .filter(checkbox => checkbox.checked)
+                    .map(item => item.parentNode.querySelector('.hidden-text-content p').textContent); // 선택한 메뉴명 가져오기
+
+                const selectedPrice = Array.from(checkboxes)
+                    .filter(checkbox => checkbox.checked)
+                    .reduce((total, item) => {
+                        const priceString = item.getAttribute('data-price'); // 메뉴 가격 가져오기
+                        const price = priceString ? parseInt(priceString) : 0;
+                        return total + price;
+                    }, 0); // 선택한 메뉴들의 총 가격 계산
+
+                // 선택한 메뉴 목록과 총 가격을 주문 페이지에 업데이트
+                updateOrderList(selectedMenu, selectedPrice);
+            }
+
+            // 주문 목록과 총 가격 업데이트 함수
+            function updateOrderList(menuList, price) {
+                orderList.innerHTML = ''; // 주문 목록 초기화
+                if (menuList.length > 0) {
+                    menuList.forEach(menu => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = menu;
+                        orderList.appendChild(listItem);
+                    });
+                } else {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = '주문한 메뉴가 없습니다.';
+                    orderList.appendChild(listItem);
+                }
+
+                totalPrice.textContent = `총 가격: ₩${price.toLocaleString()}`; // 총 가격 업데이트
+            }
+
+            // 체크박스의 change 이벤트에 대한 리스너 등록
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', handleCheckboxChange);
+            });
+
+            // 3, 4, 5, 6열 열기 버튼 클릭 시 숨겨진 텍스트 토글
+            for (let i = 3; i <= 6; i++) {
+                const toggleButton = document.getElementById(`toggleText${i}`);
+                const hiddenText = document.getElementById(`hiddenText${i}`);
+
+                toggleButton.addEventListener('click', (event) => {
+                    event.preventDefault(); // 기본 동작 방지 (링크 클릭 시 페이지 이동 방지)
+                    if (hiddenText.style.display === 'block') {
+                        hiddenText.style.display = 'none';
+                    } else {
+                        hiddenText.style.display = 'block';
+                    }
+                });
+
+                // hiddenText를 클릭해도 토글 동작
+                hiddenText.addEventListener('click', (event) => {
+                    event.stopPropagation(); // 부모 엘리먼트로의 이벤트 전파 방지
+                });
+            }
+        });
+
+    </script>
+    <script>
+        let isNavigating = false; // 페이지 이동 중인지 여부를 추적하는 변수
+
+        // 링크 클릭 시 호출되는 함수
+        async function navigateTo(url) {
+            if (!isNavigating) {
+                isNavigating = true;
+
+                try {
+                    await goToPage(url); // 페이지 이동을 비동기적으로 수행
+                } catch (error) {
+                    // 페이지 이동 중 오류 발생 시 오류 처리
+                    console.error(error);
+                } finally {
+                    // 페이지 이동이 완료되면 다시 링크 클릭을 허용
+                    isNavigating = false;
+                }
+            }
+        }
+
+        // 페이지 이동 함수
+        async function goToPage(url) {
+            return new Promise((resolve, reject) => {
+                // 페이지 이동 로직을 여기에 작성
+                // 예를 들어, 페이지를 로드하는데 setTimeout을 사용하면 다음과 같습니다.
+                setTimeout(() => {
+                    window.location.href = url; // 링크로 이동
+                    resolve(); // 페이지 이동 완료 후 Promise를 resolve
+                }, 1000); // 1초 후 이동 (원하는 딜레이를 설정하세요)
+            });
+        }
+    </script>
+
+    <script>
+        // 검색 폼에서 submit 이벤트 발생 시 검색 함수 호출
+        document.getElementById("search-form").addEventListener("submit", function (event) {
+            event.preventDefault(); // 기본 동작(페이지 새로고침) 방지
+            search();
+        });
+
+        function search() {
+            // 검색어 가져오기
+            var searchInput = document.getElementById("search-input").value;
+
+            // 검색어를 페이지 이름으로 사용하여 페이지 이동
+            window.location.href = searchInput + ".html";
+        }
+    </script>
+    <script>
+        // 푸터 엘리먼트 가져오기
+        const footer = document.querySelector('footer');
+
+        // 스크롤 이벤트 리스너 등록
+        window.addEventListener('scroll', () => {
+            // 스크롤 위치 가져오기
+            const scrollY = window.scrollY;
+
+            // 푸터를 유동적으로 이동하기 위한 임계값 (원하는 값으로 조정)
+            const threshold = 200;
+
+            // 스크롤 위치가 임계값보다 크면 푸터를 고정된 위치로 변경
+            if (scrollY > threshold) {
+                footer.style.position = 'static'; // 푸터를 정적으로 설정
+            } else {
+                footer.style.position = 'fixed'; // 푸터를 고정된 상태로 설정
+            }
+        });
+    </script>
+</body>
+
+</html>

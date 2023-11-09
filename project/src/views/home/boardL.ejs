@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/boardL.css">
+    <meta charset="UTF-8">
+    <title>문의사항 게시판</title>
+</head>
+
+<body>
+    <% const boardList = locals.boardList || []; %>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+    
+    <!-- 네비게이션 바 (헤더) 추가 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/"><strong class="text-dark">배달 주문 사이트</strong></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <!-- 드롭다운 토글 버튼 -->
+                        <a class="nav-link text-dark dropdown-toggle" href="#" id="noticeDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <strong>공지사항</strong>
+                        </a>
+                        <!-- 드롭다운 메뉴 -->
+                        <ul class="dropdown-menu" aria-labelledby="noticeDropdown">
+                            <!-- 공지사항 하위 메뉴 -->
+                            <li><a class="dropdown-item" href="/event">이벤트</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <!-- 드롭다운 토글 버튼 -->
+                        <a class a href="#" id="categoryDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <strong class="nav-link text-dark dropdown-toggle">카테고리</strong>
+                        </a>
+                        <!-- 드롭다운 메뉴 -->
+                        <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
+                            <!-- 카테고리 하위 메뉴 -->
+                            <li><a class="dropdown-item" href="/map">지도</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <!-- 드롭다운 토글 버튼 -->
+                        <a class="nav-link text-dark dropdown-toggle" href="/guide" id="guideDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <strong>이용가이드</strong>
+                        </a>
+                        <!-- 드롭다운 메뉴 -->
+                        <ul class="dropdown-menu" aria-labelledby="guideDropdown">
+                            <!-- 이용가이드 하위 메뉴 -->
+                            <li><a class="dropdown-item" href="/guide">도움말</a></li>
+                            <li><a class="dropdown-item" href="/boardL">문의하기</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/loginpage"><strong>로그인</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/signup"><strong>회원가입</strong></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div id="container">
+        <div id="list">
+            <h1>문의사항 게시판</h1>
+        </div>
+        <div class="table-container">
+            <!-- 게시판 테이블 시작 -->
+            <table class="table table-striped table table-hover">
+                <thead>
+                    <tr>
+                        <th width="10%">게시글 번호</th>
+                        <th width="40%">제목</th>
+                        <th width="20%">작성자</th>
+                        <th width="15%">날짜</th>
+                        <th width="15%">조회수</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tbody>
+                        <% if (boardList.length > 0) { %>
+                            <!-- 여기에 더미 데이터로 게시물 목록을 추가 -->
+                            <% boardList.forEach(post => { %>
+                                <tr>
+                                    <td><%= post.board_number %></td>
+                                    <td><a href="#"> <%= post.board_title %> </a></td>
+                                    <td><%= post.nickname %></td>
+                                    <td><%= post.board_date %></td>
+                                    <td><%= post.view %></td>
+                                </tr>
+                            <% }); %>
+                        <% } else { %>
+                            <tr>
+                                <td colspan="5">작성된 게시글이 없습니다</td>
+                            </tr>
+                        <% } %>
+                </tbody>
+            </table>
+            <!-- 게시판 테이블 끝 -->
+        </div>
+        <!-- 검색 -->
+        <form name="form1" method="post" action="">
+            <select name="search_option">
+                <option value="admin_id">작성자</option>
+                <option value="title">제목</option>
+                <option value="content">내용</option>
+                <option value="all">작성자+내용+제목</option>
+            </select>
+            <input name="keyword" value="">
+            <input type="submit" value="조회">
+            <a id="btnWrite" href="/boardW">글쓰기</a>
+        </form>
+    </div>
+
+
+    <footer>
+        <p>TOGETEAT</p>
+        <nav>
+            <a href="/이용약관">이용약관</a>
+            <a href="#">개인정보방침</a>
+            <a href="/소개">소개</a>
+            <a href="#">음식점소개</a>
+            <a href="#">공지사항</a>
+        </nav>
+        <p></p>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+
+</html>

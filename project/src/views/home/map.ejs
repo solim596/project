@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="/map.css">
+    <title>지도 주문</title>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="/"><strong class="text-dark">배달 주문 사이트</strong></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <!-- 드롭다운 토글 버튼 -->
+                            <a class="nav-link text-dark dropdown-toggle" href="#" id="noticeDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <strong>공지사항</strong>
+                            </a>
+                            <!-- 드롭다운 메뉴 -->
+                            <ul class="dropdown-menu" aria-labelledby="noticeDropdown">
+                                <!-- 공지사항 하위 메뉴 -->
+                                <li><a class="dropdown-item" href="/event">이벤트</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <!-- 드롭다운 토글 버튼 -->
+                            <a class="nav-link text-dark dropdown-toggle" href="#" id="categoryDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <strong>카테고리</strong>
+                            </a>
+                            <!-- 드롭다운 메뉴 -->
+                            <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
+                                <!-- 카테고리 하위 메뉴 -->
+                                <li><a class="dropdown-item" href="/map">지도</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <!-- 드롭다운 토글 버튼 -->
+                            <a class="nav-link text-dark dropdown-toggle" href="/guide" id="guideDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <strong>이용가이드</strong>
+                            </a>
+                            <!-- 드롭다운 메뉴 -->
+                            <ul class="dropdown-menu" aria-labelledby="guideDropdown">
+                                <!-- 이용가이드 하위 메뉴 -->
+                                <li><a class="dropdown-item" href="/guide">도움말</a></li>
+                                <li><a class="dropdown-item" href="/boardL">문의하기</a></li>
+    
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/loginpage"><strong>로그인</strong></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/signup"><strong>회원가입</strong></a>
+                        </li>
+                    </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div id="map"></div>
+    
+    <footer>
+        <p>TOGETEAT</p>
+        <nav>
+            <a href="/이용약관">이용약관</a>
+            <a href="#">개인정보방침</a>
+            <a href="/소개">소개</a>
+            <a href="#">음식점소개</a>
+            <a href="#">공지사항</a>
+        </nav>
+        <p></p>
+    </footer>
+
+    <script type="text/javascript"
+        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=t2m12gpw1x"></script>
+
+    <script type="text/javascript">
+        var map;
+        var markers = [];
+
+        // 가게 정보 설정
+        var stores = {
+            store1: {
+                name: "샐러디 인천시청점",
+                address: "인천광역시 남동구 미래로 30",
+                latitude: 37.452754,
+                longitude: 126.704478
+            },
+            store2: {
+                name: "제주까망돼지인천시청점KoreanBBQ",
+                address: "인천광역시 남동구 구월동 1134 12번지",
+                latitude: 37.45380109999893,
+                longitude: 126.69868145393752
+            },
+            store3: {
+                name: "고기싸롱 인천시청점",
+                address: "인천 남동구 미래로21",
+                latitude: 37.452979328421186,
+                longitude: 126.70395707502702
+            },
+            store4: {
+                name: "백소정 구월로데오점",
+                address: "인천 남동구 예술로 126 115호",
+                latitude: 37.44506904211564,
+                longitude: 126.70100740038099
+            },
+            store5: {
+                name: "오레노카츠 인천구월점",
+                address: "인천 남동구 예술로 126 1층 117호",
+                latitude: 37.445129500000235,
+                longitude: 126.70062474934483
+            },
+            store6: {
+                name: "영삼이네 우정소갈비 인천구월점",
+                address: "인천 남동구 인하로507번길 18 101호, 104호",
+                latitude:  37.44442432130483,
+                longitude: 126.70330846521048
+            },
+            store7: {
+                name: "소마다이닝 구월본점",
+                address: "인천 남동구 성말로35번길 4 2층 소마다이닝",
+                latitude: 37.44474780111424,
+                longitude: 126.70467969538603
+            },
+            store8: {
+                name: "만나계 인천구월점",
+                address: "인천 남동구 성말로13번길 87 로뎀하우스 1층 102호 만나계",
+                latitude: 37.44551166455998,
+                longitude:  126.70513006844148
+            }
+        };
+
+        // 지도 초기화
+        function initMap() {
+            var options = {
+                center: new naver.maps.LatLng(37.455995483830364, 126.70526940760742), // 인천시청 좌표
+                zoom: 15,
+            };
+            map = new naver.maps.Map('map', options);
+
+            // 모든 가게의 마커 추가
+            for (var storeKey in stores) {
+    var storeInfo = stores[storeKey];
+    var marker = new naver.maps.Marker({
+        position: new naver.maps.LatLng(storeInfo.latitude, storeInfo.longitude),
+        map: map,
+    });
+
+    // 마커 클릭 이벤트
+    (function (storeKey) {
+        naver.maps.Event.addListener(marker, 'click', function(e) {
+            var infoWindow = new naver.maps.InfoWindow({
+                content: stores[storeKey].name,
+                maxWidth: 200
+            });
+            infoWindow.open(map, e.coord);
+        });
+    })(storeKey);
+
+    markers.push(marker);
+            }
+        }
+
+        // 지도 생성 및 초기화
+        window.onload = function () {
+            initMap();
+        };
+    </script>
+</body>
+
+</html>

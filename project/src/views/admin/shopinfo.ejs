@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>가맹점 가입자 정보</title>
+</head>
+
+<body>
+    <h1>가맹점 가입자 정보</h1>
+    <table>
+        <tr>
+            <th>가맹점 ID</th>
+            <th>가맹점 이름</th>
+            <th>주소</th>
+        </tr>
+        <% shopdata.forEach(function(shop) { %>
+            <tr>
+              <td><%= shop.shopid %></td>
+              <td><%= shop.storename %></td>
+              <td><%= shop.address %></td> -->
+            </tr>
+        <!-- <% }); %>
+    </table>
+</body>
+
+</html>
