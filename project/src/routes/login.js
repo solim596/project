@@ -37,30 +37,46 @@ const session = require('express-session');
 //     });
 // });
 
-router.post('/login', async (req, res) =>{
+router.post('/', async (req, res) => {
     var userid = req.body.userid;
     var password = req.body.password;
-    if (userid && password) {             // id와 pw가 입력되었는지 확인
+   
+    if (userid && password) { 
         
-        db.query('SELECT * FROM user WHERE userid = ? AND password = ?', [username, password], function(error, results, fields) {
-            if (error) throw error;
-            if (results.length > 0) {       // db에서의 반환값이 있으면 로그인 성공
-                req.session.is_logined = true;      // 세션 정보 갱신
-                req.session.nickname = nickname;
-                req.session.save(async => {
-                    res.redirect(`/`);
-                });
-            } else {              
-                res.send(`<script type="text/javascript">alert("로그인 정보가 일치하지 않습니다."); 
-                document.location.href="/login/loginpage";</script>`);    
-            }            
-        });
 
-    } else {
-        response.send(`<script type="text/javascript">alert("아이디와 비밀번호를 입력하세요!"); 
-        document.location.href="/login/loginpage";</script>`);    
-    }
-});
+        try {
+            const [rows] = await db.query('SELECT * FROM user WHERE userid = ? AND password = ?', [userid,password]);
+          
+            if (rows.length > 0) {
+            
+              req.session.is_logined = true;      // 세션 정보 갱신
+              req.session.nickname = userid;
+              req.session.save(function(){
+                return res.send(`<script type="text/javascript">alert("로그인에 성공했습니다."); 
+                document.location.href="/";</script>`);
+              });
+            }
+
+            else{
+
+                return  res.send(`<script type="text/javascript">alert("로그인 정보가 일치하지 않습니다."); 
+                document.location.href="/loginpage";</script>`);
+               
+
+            }
+          } catch (err) {
+            return res.send(`<script type="text/javascript">alert("로그인오류"); 
+                document.location.href="/loginpage";</script>`);  
+          }
+
+
+             
+        }});
+
+    
+   
+  
+
 
 
 //------------- ::: 로그인 상태 유지  ::: ------------- //
