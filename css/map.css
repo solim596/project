@@ -1,0 +1,43 @@
+    /* 헤더 스타일 재정의 */
+    .navbar {
+      background-color: red !important;
+      /* 백그라운드 컬러 빨간색 배경 색상 */
+      margin-bottom: 20px;
+      /* 네비게이션 바와 헤더 사이 간격 설정 */
+  }
+
+  #map {
+      width: 1855px;
+      /*가로 길이 */
+      height: 500px;
+      /* 세로 길이*/
+      margin-top: 20px;
+      /* 상단 마진 조정 */
+  }
+
+  /* 푸터 스타일링 */
+  footer {
+      background-color: #333;
+      /* 배경색 설정 */
+      color: #fff;
+      /* 글자색 설정 */
+      text-align: center;
+      /* 텍스트 가운데 정렬 */
+      padding: 20px 0;
+      /* 위아래 여백 설정 */
+  }
+
+  /* 푸터 링크 스타일링 */
+  footer a {
+      color: #fff;
+      /* 링크 글자색 설정 */
+      margin: 0 10px;
+      /* 링크 사이 여백 설정 */
+      text-decoration: none;
+      /* 링크 밑줄 제거 */
+  }
+
+  footer a:hover {
+      text-decoration: underline;
+      /* 링크에 마우스를 올리면 밑줄 표시 */
+  }

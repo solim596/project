@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #0078d4;
+    /* 배경색을 지정하세요 */
+}
+
+.form-container {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 300px;
+}
+
+h1 {
+    color: #0078d4;
+    font-size: 36px;
+    margin-top: 0;
+    /* 기본 마진을 제거합니다 */
+}
+
+label {
+    display: block;
+    text-align: center;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: calc(100% - 40px);
+    /* 왼쪽 여백 20px, 오른쪽 여백 20px */
+    padding: 10px;
+    margin: 0 20px;
+    /* 왼쪽 여백 20px, 오른쪽 여백 20px */
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    background-color: #0078d4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}

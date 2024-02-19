@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="main.js"></script>
+    <title>음식 추천</title>
+</head>
+
+<body>
+    <h1 id="ageRecommendation"></h1>
+    <input id="ageInput" type="text">
+    <button onclick="getRecommendation()">추천받기</button>
+    <script>
+        function getRecommendation() {
+            const ageInput = document.getElementById('ageInput').value;
+            fetch(`/age/${ageInput}`)
+                .then((response) => response.json())
+                .then((data) => {
+                    const recommendation = data[ageInput];
+                    document.getElementById('ageRecommendation').innerHTML = `${ageInput}: ${recommendation}`;
+                })
+                .catch((error) => {
+                    console.error('에러:', error);
+                    document.getElementById('ageRecommendation').innerHTML = '오류가 발생했습니다';
+                });
+        }
+    </script>
+</body>
+</html>
